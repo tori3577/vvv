@@ -1,5 +1,14 @@
-var photos = ['image/banana.jpg', 'image/bar.jpg', 'image/big_win.jpg', 'image/cherry.jpg', 'image/lemon.jpg',
-    'image/orange.jpg', 'image/plum.jpg', 'image/seven.jpg', 'image/watermelon.jpg'];
+var photos = [
+    'image/banana.jpg',
+    'image/bar.jpg',
+    'image/big_win.jpg',
+    'image/cherry.jpg',
+    'image/lemon.jpg',
+    'image/orange.jpg',
+    'image/plum.jpg',
+    'image/seven.jpg',
+    'image/watermelon.jpg'
+];
 
 
 function getRandomImageSrc() {
@@ -16,4 +25,13 @@ function doLohothron() {
 
     var img2 = getRandomImageSrc();
     document.getElementById("test2").setAttribute("src", img2);
+
+    console.log("img0 = " + img0);
+    console.log("img1 = " + img1);
+    console.log("img2 = " + img2);
+    if ((img0 == img1) && (img1 == img2)) {
+        console.log("Victory");
+        alert("You won!");
+    }
+
 }
