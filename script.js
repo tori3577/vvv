@@ -21,6 +21,27 @@ function getRandomImageSrc() {
     console.log("generated image index is " + photosIndex);
     return photos[photosIndex];
 }
+
+function isVictory(img0, img1, img2) {
+    return (img0 == img1) && (img1 == img2);
+}
+
+function onVictory() {
+    console.log("Victory");
+    var congratsAudio = new Audio("sound/zvonok.mp3");
+    congratsAudio.play();
+    for (var i = 0; i < 3; i++) {
+        document.getElementById("test" + i).setAttribute("class", "color-red");
+    }
+    alert("You won!");
+}
+
+function playStartGameSound() {
+    var audio = new Audio("sound/sounds-728-rising-to-the-surface-.mp3");
+    audio.play();
+}
+
+
 function doLohothron() {
     var img0 = getRandomImageSrc();
     document.getElementById("test0").setAttribute("src", img0);
@@ -31,20 +52,10 @@ function doLohothron() {
     var img2 = getRandomImageSrc();
     document.getElementById("test2").setAttribute("src", img2);
 
-    console.log("img0 = " + img0);
-    console.log("img1 = " + img1);
-    console.log("img2 = " + img2);
-    if ((img0 == img1) && (img1 == img2)) {
-        console.log("Victory");
-        var congratsAudio = new Audio("sound/zvonok.mp3");
-        congratsAudio.play();
-        for (var i = 0; i < 3; i++) {
-            document.getElementById("test" + i).setAttribute("class", "color-red");
-        }
-        alert("You won!");
+    if (isVictory(img0, img1, img2)) {
+        onVictory();
     } else {
-        var audio = new Audio("sound/sounds-728-rising-to-the-surface-.mp3");
-        audio.play();
+        playStartGameSound();
     }
 
 }
